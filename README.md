@@ -1,12 +1,12 @@
-# FakeWeather
+# WeatherVane
 
-TODO: Write a gem description
+Multiple weather service fakes, to avoid http request
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'fake_weather'
+    gem 'weather_vane'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install fake_weather
+    $ gem install weather_vane
 
 ## Usage
 

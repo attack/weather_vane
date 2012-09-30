@@ -2,7 +2,7 @@ require 'net/http'
 require 'uri'
 require 'nori'
 
-module FakeWeather
+module WeatherVane
   class Service
   end
 end

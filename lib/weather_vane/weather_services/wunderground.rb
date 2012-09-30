@@ -1,4 +1,4 @@
-module FakeWeather
+module WeatherVane
   class Wunderground < Service
     
     EXPECTED_DATA_FORMAT = {
@@ -14,7 +14,7 @@ module FakeWeather
       response = Net::HTTP.get_response(uri)
       hash_response = Nori.parse(response.body)
       
-      HashComparer.valid?(hash_response, EXPECTED_DATA_FORMAT)
+      WeatherVane::HashComparer.valid?(hash_response, EXPECTED_DATA_FORMAT)
     end
     
   end

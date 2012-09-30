@@ -5,7 +5,7 @@ require 'gyoku'
 Gyoku.convert_symbols_to :none
 
 $:.unshift((File.join(File.dirname(__FILE__), '..', 'lib')))
-require 'fake_weather'
+require 'weather_vane'
 
 RSpec.configure do |config|  
 end

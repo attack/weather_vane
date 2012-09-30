@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'fake_weather/version'
+require 'weather_vane/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "fake_weather"
-  gem.version       = FakeWeather::VERSION
+  gem.name          = "weather_vane"
+  gem.version       = WeatherVane::VERSION
   gem.authors       = ["Mark G"]
   gem.email         = ["rtec88@gmail.com"]
   gem.description   = %q{Multiple weather service fakes, to avoid http requests}

@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe "HashComparer" do
+describe "WeatherVane::HashComparer" do
   describe "when the target hash is missing a key from the source hash" do
     it "returns false" do
       target = {}
       source = {'a' => 1}
       
-      HashComparer.valid?(target, source).should be_false
+      WeatherVane::HashComparer.valid?(target, source).should be_false
     end
   end
   
@@ -15,7 +15,7 @@ describe "HashComparer" do
       target = {'a' => 1}
       source = {'a' => 1}
       
-      HashComparer.valid?(target, source).should be_true
+      WeatherVane::HashComparer.valid?(target, source).should be_true
     end
   end
   
@@ -24,7 +24,7 @@ describe "HashComparer" do
       target = {'a' => 2}
       source = {'a' => 1}
       
-      HashComparer.valid?(target, source).should be_true
+      WeatherVane::HashComparer.valid?(target, source).should be_true
     end
   end
   
@@ -33,7 +33,7 @@ describe "HashComparer" do
       target = {'a' => 2, 'b' => 3}
       source = {'a' => 1}
       
-      HashComparer.valid?(target, source).should be_true
+      WeatherVane::HashComparer.valid?(target, source).should be_true
     end
   end
   
@@ -42,7 +42,7 @@ describe "HashComparer" do
       target = {'a' => {'c' => 4}}
       source = {'a' => {'b' => 2, 'c' => 3}}
       
-      HashComparer.valid?(target, source).should be_false
+      WeatherVane::HashComparer.valid?(target, source).should be_false
     end
   end
   
@@ -51,7 +51,7 @@ describe "HashComparer" do
       target = {'a' => {'b' => 2, 'c' => 3}}
       source = {'a' => {'c' => 4}}
 
-      HashComparer.valid?(target, source).should be_true
+      WeatherVane::HashComparer.valid?(target, source).should be_true
     end
   end
   
@@ -60,7 +60,7 @@ describe "HashComparer" do
       target = {'a' => 1}
       source = {'a' => {'b' => 2, 'c' => 3}}
 
-      HashComparer.valid?(target, source).should be_false
+      WeatherVane::HashComparer.valid?(target, source).should be_false
     end
   end
   
@@ -69,7 +69,7 @@ describe "HashComparer" do
       target = {'a' => {'b' => 2, 'c' => 3}}
       source = {'a' => 1}
       
-      HashComparer.valid?(target, source).should be_false
+      WeatherVane::HashComparer.valid?(target, source).should be_false
     end
   end
   
@@ -78,28 +78,28 @@ describe "HashComparer" do
       target = {'a' => 1}
       source = {:a => 1}
       
-      HashComparer.valid?(target, source).should be_true
+      WeatherVane::HashComparer.valid?(target, source).should be_true
     end
   
     it "handles target is symbol and source is string" do
       target = {:a => 1}
       source = {'a' => 1}
       
-      HashComparer.valid?(target, source).should be_true
+      WeatherVane::HashComparer.valid?(target, source).should be_true
     end
   
     it "handles target is string and source is symbol for multi-levels" do
       target = {'a' => {'b' => 2, 'c' => 3}}
       source = {:a => {'c' => 4}}
 
-      HashComparer.valid?(target, source).should be_true
+      WeatherVane::HashComparer.valid?(target, source).should be_true
     end
     
     it "handles target is symbol and source is string for multi-levels" do
       target = {:a => {'b' => 2, 'c' => 3}}
       source = {'a' => {'c' => 4}}
 
-      HashComparer.valid?(target, source).should be_true
+      WeatherVane::HashComparer.valid?(target, source).should be_true
     end
   end
 end

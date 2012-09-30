@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe "FakeWeather::Wunderground" do
+describe "WeatherVane::Wunderground" do
   WUNDEGROUND_REGEX = /.*api.wunderground.com.*WXCurrentObXML.*/
   
   describe "#api_valid?" do
     it "gets data from Wunderground with default query" do
       stub = stub_request(:get, WUNDEGROUND_REGEX).with(:query => {"query" => "KSFO"})
       
-      FakeWeather::Wunderground.api_valid?
+      WeatherVane::Wunderground.api_valid?
       
       stub.should have_been_requested
     end
@@ -15,7 +15,7 @@ describe "FakeWeather::Wunderground" do
     context "when all required fields are found" do
       it "returns true" do
         WebMock.disable!
-        FakeWeather::Wunderground.api_valid?.should be_true
+        WeatherVane::Wunderground.api_valid?.should be_true
         WebMock.enable!
       end
     end
@@ -26,7 +26,7 @@ describe "FakeWeather::Wunderground" do
         stub_request(:get, WUNDEGROUND_REGEX).
           to_return(:body => response, :status => 200)
 
-        FakeWeather::Wunderground.api_valid?.should be_false
+        WeatherVane::Wunderground.api_valid?.should be_false
       end
     end
   end
