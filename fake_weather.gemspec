@@ -6,14 +6,18 @@ require 'fake_weather/version'
 Gem::Specification.new do |gem|
   gem.name          = "fake_weather"
   gem.version       = FakeWeather::VERSION
-  gem.authors       = ["Mark"]
+  gem.authors       = ["Mark G"]
   gem.email         = ["rtec88@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Multiple weather service fakes, to avoid http requests}
+  gem.summary       = %q{Multiple weather service fakes, to avoid http requests}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.test_files    = gem.files.grep(%r{^spec/})
   gem.require_paths = ["lib"]
+  
+  gem.add_development_dependency 'rspec', '~> 2.6.0'
+  gem.add_development_dependency 'bundler'
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'pry'
 end
