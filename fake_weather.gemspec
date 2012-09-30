@@ -16,6 +16,10 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^spec/})
   gem.require_paths = ["lib"]
   
+  gem.add_dependency 'webmock'
+  gem.add_dependency 'gyoku'
+  gem.add_dependency 'nori'
+  
   gem.add_development_dependency 'rspec', '~> 2.6.0'
   gem.add_development_dependency 'bundler'
   gem.add_development_dependency 'rake'
