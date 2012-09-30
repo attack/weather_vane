@@ -1,20 +1,20 @@
 module WeatherVane
   module HashComparer
     def self.valid?(target, source)
-      _missing(target, source) == []
+      missing(target, source) == []
     end
   
-    def self._missing(target, source)
+    def self.missing(target, source)
       source.keys.inject([]) do |memo, key|
         if source[key].kind_of?(Hash)
           if target[key.to_s].kind_of?(Hash)
-            next_level = _missing(target[key.to_s], source[key])
+            next_level = missing(target[key.to_s], source[key])
             memo << {key => next_level} unless next_level == []
           elsif target[key.to_sym].kind_of?(Hash)
-            next_level = _missing(target[key.to_sym], source[key])
+            next_level = missing(target[key.to_sym], source[key])
             memo << {key => next_level} unless next_level == []
           else
-            next_level = _missing({}, source[key])
+            next_level = missing({}, source[key])
             memo << {key => next_level} unless next_level == []
           end
         else
