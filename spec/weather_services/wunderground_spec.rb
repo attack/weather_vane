@@ -1,11 +1,9 @@
 require 'spec_helper'
 
-describe "WeatherVane::Wunderground" do
-  WUNDEGROUND_REGEX = /.*api.wunderground.com.*WXCurrentObXML.*/
-  
+describe "WeatherVane::Wunderground" do  
   describe "#api_valid?" do
     it "gets data from Wunderground with default query" do
-      stub = stub_request(:get, WUNDEGROUND_REGEX).with(:query => {"query" => "KSFO"})
+      stub = stub_request(:get, WeatherVane::Wunderground::API_URL).with(:query => {"query" => "KSFO"})
       
       WeatherVane::Wunderground.api_valid?
       
@@ -23,7 +21,8 @@ describe "WeatherVane::Wunderground" do
     context "when one or many fields are not found" do
       it "throws an error if expected field not found" do
         response = Gyoku.xml( :current_observation => {} )
-        stub_request(:get, WUNDEGROUND_REGEX).
+        stub_request(:get, WeatherVane::Wunderground::API_URL).
+          with(:query => {"query" => "KSFO"}).
           to_return(:body => response, :status => 200)
 
         WeatherVane::Wunderground.api_valid?.should be_false

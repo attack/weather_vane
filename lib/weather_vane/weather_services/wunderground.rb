@@ -1,5 +1,6 @@
 module WeatherVane
   class Wunderground < Service
+    API_URL = "http://api.wunderground.com/auto/wui/geo/WXCurrentObXML/index.xml"
     
     EXPECTED_DATA_FORMAT = {
       :current_observation => {
@@ -8,14 +9,8 @@ module WeatherVane
     }
     
     def self.api_valid?
-      uri = URI("http://api.wunderground.com/auto/wui/geo/WXCurrentObXML/index.xml")
-      uri.query = URI.encode_www_form({:query => 'KSFO'})
-
-      response = Net::HTTP.get_response(uri)
-      hash_response = Nori.parse(response.body)
-      
-      WeatherVane::HashComparer.valid?(hash_response, EXPECTED_DATA_FORMAT)
+      response = http_get(API_URL, {:query => 'KSFO'})
+      WeatherVane::HashComparer.valid?(response, EXPECTED_DATA_FORMAT)
     end
-    
   end
 end
