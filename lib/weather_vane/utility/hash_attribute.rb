@@ -23,8 +23,8 @@ module WeatherVane
       end
       
       def _partition_hash(input_hash)
-        values = input_hash.select {|key, value| !key.match /^\@/ }
-        attributes = input_hash.select {|key, value| key.match /^\@/ }
+        values = input_hash.select {|key, value| !key.to_s.match /^\@/ }
+        attributes = input_hash.select {|key, value| key.to_s.match /^\@/ }
         
         [values, attributes]
       end
