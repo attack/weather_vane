@@ -103,4 +103,3 @@ describe "WeatherVane::HashComparer" do
     end
   end
 end
-
