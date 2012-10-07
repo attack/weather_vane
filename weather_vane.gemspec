@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   
   gem.add_dependency 'faraday'
-  gem.add_dependency 'webmock'
+  gem.add_dependency 'nokogiri'
   gem.add_dependency 'gyoku'
   gem.add_dependency 'nori'
   gem.add_dependency 'vcr'
@@ -26,5 +26,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'bundler'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'pry'
-  gem.add_development_dependency 'timecop'
+  gem.add_development_dependency 'webmock'
 end
