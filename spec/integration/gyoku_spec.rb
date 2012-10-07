@@ -43,7 +43,7 @@ describe Gyoku do
       </outer>
     XML
         
-    if ruby_19?
+    if WeatherVane.ruby_19?
       generated_xml.should == oneline_xml(xml)
     else
       generated_xml.should match /<outer>.*<\/outer>/
@@ -80,7 +80,7 @@ describe Gyoku do
       </item>
     XML
     
-    if ruby_19?
+    if WeatherVane.ruby_19?
       generated_xml.should_not == oneline_xml(desired_xml)
       generated_xml.should == oneline_xml(actual_xml)
     else

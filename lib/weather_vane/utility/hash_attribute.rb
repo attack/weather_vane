@@ -24,7 +24,10 @@ module WeatherVane
       
       def _partition_hash(input_hash)
         values = input_hash.select {|key, value| !key.to_s.match /^\@/ }
+        values = Hash[values] unless WeatherVane.ruby_19?
+        
         attributes = input_hash.select {|key, value| key.to_s.match /^\@/ }
+        attributes = Hash[attributes] unless WeatherVane.ruby_19?
         
         [values, attributes]
       end
